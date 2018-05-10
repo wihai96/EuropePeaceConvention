@@ -1,0 +1,26 @@
+﻿@model IEnumerable<EuropePeaceConvention.Models.ArticlesModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="font-family:Times New Roman;">Articles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model)
+{
+    <hr />
+
+    <h3 style="font-family:Times New Roman;">@Html.DisplayFor(modelItem => item.Title)</h3>
+
+    <p style="font-family:Times New Roman; font-size:120%;">@Html.DisplayFor(modelItem => item.Content)</p>
+
+    <p style="font-family:Times New Roman;">@Html.DisplayFor(modelItem => item.User) @Html.DisplayFor(modelItem => item.PostDate)</p>
+
+    @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+}
+

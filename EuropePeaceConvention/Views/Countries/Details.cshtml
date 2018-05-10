@@ -1,0 +1,54 @@
+﻿@model EuropePeaceConvention.Models.CountriesModels
+
+@{
+    ViewBag.Title = "Details";
+    var timeCode = "https://www.worldtimebuddy.com/clock_widget.js?h=" + Model.HourHashCode + "&bc=8BA1BB&cn=&wt=c2";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CountriesModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISO3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISO3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Population)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Population)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area) (1 000 km²)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+        <hr/>
+        <span class="wtb-ew-v1" style="width: 369px; display:inline-block">
+        <script src=@timeCode></script><i><a href="https://www.worldtimebuddy.com/">World Clock</a></i><noscript><a href="https://www.worldtimebuddy.com/">World Clock</a></noscript>
+        <script>window[wtb_event_widgets.pop()].init()</script></span>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

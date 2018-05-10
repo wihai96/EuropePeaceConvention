@@ -1,0 +1,50 @@
+﻿@model EuropePeaceConvention.Models.ArticleDetailsViewModels
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 style="font-family:Times New Roman;">Details</h2>
+
+<div>
+    <hr />
+    <h3 style="font-family:Times New Roman;">@Html.DisplayFor(model => model.Article.Title)</h3>
+
+    <p style="font-family:Times New Roman;">@Html.DisplayFor(model => model.Article.Content)</p>
+
+    <p style="font-family:Times New Roman;">@Html.DisplayFor(model => model.Article.User) @Html.DisplayFor(model => model.Article.PostDate)</p>
+</div>
+<p>
+    @if (Model.Article.User == User.Identity.GetUserName())
+    {
+        <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Article.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Article.Id })
+        </p>
+    }
+    @Html.ActionLink("Back to List", "Index")
+    </p>
+
+    <br>
+    <h4>Leave a Comment:</h4>
+    <form role="form" method="post">
+        <div class="form-group">
+            <textarea class="form-control" rows="3" required id="Content" name="Content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <br>
+
+    <p>Comments:</p><br>
+    <div class="row">
+
+        @foreach (var item in Model.Comment)
+        {
+            <div class="col-sm-10">
+                <h4>@Html.DisplayFor(modelItem => item.User) <small>@Html.DisplayFor(modelItem => item.PostDate)</small></h4>
+                <p>@Html.DisplayFor(modelItem => item.Content)</p>
+                <br>
+            </div>
+        }
+    </div>
